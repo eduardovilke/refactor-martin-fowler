@@ -2,15 +2,11 @@ const invoicesMock = require('./invoices.json') ;
 const playsMock = require('./plays.json');
 
 function statement (invoice, plays) {
-  let totalAmount = 0;
   let result = `Statement for ${invoice.customer}\n`;
 
   for(let perf of invoice.performances) {    
     result += ` ${playFor(perf).name}: ${usd(amountFor(perf)/100)} (${perf.audience} seats)\n`;
-    totalAmount += amountFor(perf)
   }
-
-  
 
   function amountFor(aPerformance){
     let result = 0;
@@ -52,14 +48,22 @@ function statement (invoice, plays) {
   }
 
   function totalVolumeCredits(){
-    let volumeCredits = 0;
+    let result = 0;
     for(let perf of invoice.performances){
-      volumeCredits += volumeCreditsFor(perf);
+      result += volumeCreditsFor(perf);
     }
-    return volumeCredits;
+    return result;
   }
 
-  result += `Amount owed is ${usd(totalAmount/100)}\n`;
+  function totalAmount(){
+    let result = 0;
+    for(let perf of invoice.performances){
+      result += amountFor(perf);
+    }
+    return result;
+  }
+
+  result += `Amount owed is ${usd(totalAmount()/100)}\n`;
   result += `You earned ${totalVolumeCredits()} credits\n`;
 
   return result;
