@@ -1,8 +1,8 @@
-const invoicesMock = require('../invoices.json') ;
-const playsMock = require('../plays.json');
-const createStatementData = require('./createStatementData');
+import invoicesMock from '../invoices.json' assert { type: 'json' };
+import playsMock from '../plays.json' assert { type: 'json' };
+import createStatementData from './createStatementData.js';
 
-function statement (invoice, plays) {
+export default function statement (invoice, plays) {
   return renderPlainText(createStatementData(invoice, plays));
 }
 

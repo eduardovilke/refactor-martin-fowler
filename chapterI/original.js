@@ -1,5 +1,5 @@
-const invoicesMock = require('./invoices.json') ;
-const playsMock = require('./plays.json');
+import invoicesMock from './invoices.json'
+import playsMock from './plays.json'
 
 function statement (invoice, plays) {
   let totalAmount = 0;

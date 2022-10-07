@@ -1,0 +1,13 @@
+{
+  "name": "refactor-martin-fowler",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": "git@github.com:eduardovilke/refactor-martin-fowler.git",
+  "author": "Eduardo Vilke <eduardo.svilke@gmail.com>",
+  "license": "MIT",
+  "dependencies": {}
+}
