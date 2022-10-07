@@ -1,8 +1,7 @@
-import invoicesMock from '../invoices.json' assert { type: 'json' };
-import playsMock from '../plays.json' assert { type: 'json' };
+
 import createStatementData from './createStatementData.js';
 
-export default function statement (invoice, plays) {
+export function statement (invoice, plays) {
   return renderPlainText(createStatementData(invoice, plays));
 }
 
@@ -17,7 +16,7 @@ function renderPlainText(data) {
   return result;
 }
 
-function htmlStatement(invoice, plays) {
+export function htmlStatement(invoice, plays) {
   return renderHtml(createStatementData(invoice, plays));
 }
 
@@ -43,6 +42,3 @@ function usd(aNumber){
     })
     .format(aNumber/100);
 }
-
-console.log(statement(invoicesMock[0], playsMock))
-console.log(htmlStatement(invoicesMock[0], playsMock))

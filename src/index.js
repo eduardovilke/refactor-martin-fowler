@@ -1,4 +1,10 @@
-import statement from '../chapterI/refactored/statement.js';
-// console.log(statement);
+import invoicesMock from './chapterI/invoices.json' assert { type: 'json' };
+import playsMock from './chapterI/plays.json' assert { type: 'json' };
 
-console.log('aoba', statement)
+import {statement, htmlStatement} from './chapterI/refactored/statement.js';
+
+const resultStatement = statement(invoicesMock[0], playsMock);
+const resultHtml = htmlStatement(invoicesMock[0], playsMock);
+
+console.log(resultStatement);
+console.log(resultHtml);
