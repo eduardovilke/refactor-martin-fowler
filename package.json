@@ -2,12 +2,22 @@
   "name": "refactor-martin-fowler",
   "version": "1.0.0",
   "type": "module",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node index.js",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src"
   },
   "repository": "git@github.com:eduardovilke/refactor-martin-fowler.git",
   "author": "Eduardo Vilke <eduardo.svilke@gmail.com>",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
+  }
 }
