@@ -1,7 +1,14 @@
+import ComedyCalculator from "./ComedyCalculator.js";
 import PerformanceCalculator from "./PerformanceCalculator.js";
+import TragedyCalculator from "./TragedyCalculator.js";
 
 function createPerformanceCalculator(aPerformance, aPlay){
-  return new PerformanceCalculator(aPerformance, aPlay);
+  switch(aPlay.type) {
+    case "tragedy" : return new TragedyCalculator(aPerformance, aPlay);
+    case "comedy" : return new ComedyCalculator(aPerformance, aPlay);
+    default:
+      throw new Error(`unknown type ${aPlay.type}`)
+  }
 }
 
 export default function createStatementData(invoice, plays) {
