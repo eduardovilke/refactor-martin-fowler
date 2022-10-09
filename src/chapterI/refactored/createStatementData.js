@@ -1,5 +1,4 @@
 import ComedyCalculator from "./ComedyCalculator.js";
-import PerformanceCalculator from "./PerformanceCalculator.js";
 import TragedyCalculator from "./TragedyCalculator.js";
 
 function createPerformanceCalculator(aPerformance, aPlay){
