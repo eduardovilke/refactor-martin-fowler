@@ -1,3 +1,5 @@
+import PerformanceCalculator from "./PerformanceCalculator.js";
+
 export default function createStatementData(invoice, plays) {
   const statementData = {};
   statementData.customer = invoice.customer;
@@ -8,8 +10,9 @@ export default function createStatementData(invoice, plays) {
   return statementData;
 
   function enrichPerformance(aPerformance) {
+    const calculator = new PerformanceCalculator(aPerformance, playFor(aPerformance));
     const result = { ...aPerformance };
-    result.play = playFor(result);
+    result.play = calculator.play;
     result.amount = amountFor(result);
     result.volumeCredits = volumeCreditsFor(result);
 
@@ -21,25 +24,7 @@ export default function createStatementData(invoice, plays) {
   }
 
   function amountFor(aPerformance) {
-    let result = 0;
-    switch (aPerformance.play.type) {
-      case "tragedy":
-        result = 40000;
-        if (aPerformance.audience > 30) {
-          result += 1000 * (aPerformance.audience - 30);
-        }
-        break;
-      case "comedy":
-        result = 30000;
-        if (aPerformance.audience > 20) {
-          result += 10000 + 500 * (aPerformance.audience - 20);
-        }
-        result += 300 * aPerformance.audience;
-        break;
-      default:
-        throw new Error(`unknown type: ${playFor(aPerformance).type}`);
-    }
-    return result;
+    return new PerformanceCalculator(aPerformance, playFor(aPerformance)).amount;
   }
 
   function volumeCreditsFor(aPerformance) {
